@@ -1,0 +1,50 @@
+﻿@model AppBalada.Models.Ingresso
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Ingresso</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Bilheteria.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bilheteria.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Evento.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Evento.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pessoa.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pessoa.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsVip)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsVip)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IngressoId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
