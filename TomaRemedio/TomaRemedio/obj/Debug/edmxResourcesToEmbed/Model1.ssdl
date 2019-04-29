@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model1.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="Model1StoreContainer">
+    <EntitySet Name="ReceitaSet" EntityType="Model1.Store.ReceitaSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RemedioSet" EntityType="Model1.Store.RemedioSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DoencaSet" EntityType="Model1.Store.DoencaSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RemedioDoencaSet" EntityType="Model1.Store.RemedioDoencaSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="ReceitaRemedios" Association="Model1.Store.ReceitaRemedios">
+      <End Role="Receita" EntitySet="ReceitaSet" />
+      <End Role="Remedio" EntitySet="RemedioSet" />
+    </AssociationSet>
+    <AssociationSet Name="DoencaRemedioDoenca" Association="Model1.Store.DoencaRemedioDoenca">
+      <End Role="Doenca" EntitySet="DoencaSet" />
+      <End Role="RemedioDoenca" EntitySet="RemedioDoencaSet" />
+    </AssociationSet>
+    <AssociationSet Name="RemedioRemedioDoenca" Association="Model1.Store.RemedioRemedioDoenca">
+      <End Role="Remedio" EntitySet="RemedioSet" />
+      <End Role="RemedioDoenca" EntitySet="RemedioDoencaSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ReceitaSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Data" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Clinica" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Medico" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Especialidade" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RemedioSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nome" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IsReceita" Type="bit" Nullable="false" />
+    <Property Name="Intervalo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Dosagem" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ReceitaId" Type="int" Nullable="false" />
+    <Property Name="Tipo" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DoencaSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nome" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Causas" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Sintomas" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RemedioDoencaSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RemediosId" Type="int" Nullable="false" />
+    <Property Name="DoencaId" Type="int" Nullable="false" />
+    <Property Name="RemedioId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="ReceitaRemedios">
+    <End Role="Receita" Type="Model1.Store.ReceitaSet" Multiplicity="1" />
+    <End Role="Remedio" Type="Model1.Store.RemedioSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Receita">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Remedio">
+        <PropertyRef Name="ReceitaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DoencaRemedioDoenca">
+    <End Role="Doenca" Type="Model1.Store.DoencaSet" Multiplicity="1" />
+    <End Role="RemedioDoenca" Type="Model1.Store.RemedioDoencaSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doenca">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RemedioDoenca">
+        <PropertyRef Name="DoencaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RemedioRemedioDoenca">
+    <End Role="Remedio" Type="Model1.Store.RemedioSet" Multiplicity="1" />
+    <End Role="RemedioDoenca" Type="Model1.Store.RemedioDoencaSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Remedio">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RemedioDoenca">
+        <PropertyRef Name="RemedioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

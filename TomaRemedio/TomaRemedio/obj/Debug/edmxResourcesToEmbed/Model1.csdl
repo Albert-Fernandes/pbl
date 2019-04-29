@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="Model1Container" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ReceitaSet" EntityType="Model1.Receita" />
+    <EntitySet Name="RemedioSet" EntityType="Model1.Remedio" />
+    <EntitySet Name="DoencaSet" EntityType="Model1.Doenca" />
+    <EntitySet Name="RemedioDoencaSet" EntityType="Model1.RemedioDoenca" />
+    <AssociationSet Name="ReceitaRemedios" Association="Model1.ReceitaRemedios">
+      <End Role="Receita" EntitySet="ReceitaSet" />
+      <End Role="Remedio" EntitySet="RemedioSet" />
+    </AssociationSet>
+    <AssociationSet Name="DoencaRemedioDoenca" Association="Model1.DoencaRemedioDoenca">
+      <End Role="Doenca" EntitySet="DoencaSet" />
+      <End Role="RemedioDoenca" EntitySet="RemedioDoencaSet" />
+    </AssociationSet>
+    <AssociationSet Name="RemedioRemedioDoenca" Association="Model1.RemedioRemedioDoenca">
+      <End Role="Remedio" EntitySet="RemedioSet" />
+      <End Role="RemedioDoenca" EntitySet="RemedioDoencaSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Receita">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Data" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Clinica" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Medico" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Especialidade" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Remedios" Relationship="Model1.ReceitaRemedios" FromRole="Receita" ToRole="Remedio" />
+  </EntityType>
+  <EntityType Name="Remedio">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nome" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsReceita" Type="Boolean" Nullable="false" />
+    <Property Name="Intervalo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Dosagem" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ReceitaId" Type="Int32" Nullable="false" />
+    <Property Name="Tipo" Type="Model1.Tipo" Nullable="false" />
+    <NavigationProperty Name="Receita" Relationship="Model1.ReceitaRemedios" FromRole="Remedio" ToRole="Receita" />
+    <NavigationProperty Name="RemedioDoenca" Relationship="Model1.RemedioRemedioDoenca" FromRole="Remedio" ToRole="RemedioDoenca" />
+  </EntityType>
+  <EntityType Name="Doenca">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nome" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Causas" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Sintomas" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="RemedioDoenca" Relationship="Model1.DoencaRemedioDoenca" FromRole="Doenca" ToRole="RemedioDoenca" />
+  </EntityType>
+  <EntityType Name="RemedioDoenca">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RemediosId" Type="Int32" Nullable="false" />
+    <Property Name="DoencaId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Doenca" Relationship="Model1.DoencaRemedioDoenca" FromRole="RemedioDoenca" ToRole="Doenca" />
+    <NavigationProperty Name="Remedio" Relationship="Model1.RemedioRemedioDoenca" FromRole="RemedioDoenca" ToRole="Remedio" />
+    <Property Name="RemedioId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="ReceitaRemedios">
+    <End Type="Model1.Receita" Role="Receita" Multiplicity="1" />
+    <End Type="Model1.Remedio" Role="Remedio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Receita">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Remedio">
+        <PropertyRef Name="ReceitaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DoencaRemedioDoenca">
+    <End Type="Model1.Doenca" Role="Doenca" Multiplicity="1" />
+    <End Type="Model1.RemedioDoenca" Role="RemedioDoenca" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doenca">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RemedioDoenca">
+        <PropertyRef Name="DoencaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RemedioRemedioDoenca">
+    <End Type="Model1.Remedio" Role="Remedio" Multiplicity="1" />
+    <End Type="Model1.RemedioDoenca" Role="RemedioDoenca" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Remedio">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RemedioDoenca">
+        <PropertyRef Name="RemedioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EnumType Name="Tipo">
+    <Member Name="SemTarja" Value="0" />
+    <Member Name="Amarela" Value="1" />
+    <Member Name="Vermelha" Value="2" />
+    <Member Name="Preta" Value="3" />
+  </EnumType>
+</Schema>
