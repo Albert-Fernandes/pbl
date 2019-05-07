@@ -21,7 +21,6 @@ namespace TomaRemedio.Controllers
             var remedioDoencas = db.RemedioDoencas.Include(r => r.Doenca).Include(r => r.Remedio);
             return View(remedioDoencas.ToList());
         }
-
         // GET: RemedioDoencas/Details/5
         public ActionResult Details(int? id)
         {
@@ -40,8 +39,8 @@ namespace TomaRemedio.Controllers
         // GET: RemedioDoencas/Create
         public ActionResult Create(int? id)
         {
-            ViewBag.Doenca = db.Doencas.Find(id);
             ViewBag.RemedioId = new SelectList(db.Remedios, "Id", "Nome");
+            ViewBag.Doenca = db.Doencas.Find(id);
             return View();
         }
 
@@ -50,24 +49,21 @@ namespace TomaRemedio.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,RemediosId,DoencaId,RemedioId")] RemedioDoenca remedioDoenca , List<int> RemediosId , Doenca DoencaId)
+        public ActionResult Create([Bind(Include = "Id,RemediosId,DoencaId,RemedioId")] RemedioDoenca remedioDoenca , List<int> RemedioId , Doenca Doenca)
         {
             if (ModelState.IsValid)
             {
-                foreach(var remediosId in RemediosId)
+                foreach(var remediosId in RemedioId)
                 {
                     RemedioDoenca rr = new RemedioDoenca();
-                    rr.DoencaId = DoencaId.Id;
-                    rr.RemediosId = remediosId;
+                    rr.DoencaId = Doenca.Id;
+                    rr.RemedioId = remediosId;
                     db.RemedioDoencas.Add(rr);
                 }
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-            ViewBag.DoencaId = new SelectList(db.Doencas, "Id", "Nome", remedioDoenca.DoencaId);
-            ViewBag.RemedioId = new SelectList(db.Remedios, "Id", "Nome", remedioDoenca.RemedioId);
-            return View(remedioDoenca);
+            return View();
         }
 
         // GET: RemedioDoencas/Edit/5
@@ -92,17 +88,23 @@ namespace TomaRemedio.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,RemediosId,DoencaId,RemedioId")] RemedioDoenca remedioDoenca)
+        public ActionResult Edit([Bind(Include = "Id,RemediosId,DoencaId,RemedioId")] RemedioDoenca remedioDoenca,List<int>RemedioId,Doenca Doenca)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(remedioDoenca).State = EntityState.Modified;
+                foreach(var remedios in RemedioId)
+                {
+                    RemedioDoenca rr = new RemedioDoenca();
+                    rr.DoencaId = Doenca.Id;
+                    rr.RemedioId = remedios;
+                    db.Entry(remedioDoenca).State = EntityState.Modified;
+                }
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
             ViewBag.DoencaId = new SelectList(db.Doencas, "Id", "Nome", remedioDoenca.DoencaId);
             ViewBag.RemedioId = new SelectList(db.Remedios, "Id", "Nome", remedioDoenca.RemedioId);
-            return View(remedioDoenca);
+            return View();
         }
 
         // GET: RemedioDoencas/Delete/5
@@ -130,7 +132,6 @@ namespace TomaRemedio.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)

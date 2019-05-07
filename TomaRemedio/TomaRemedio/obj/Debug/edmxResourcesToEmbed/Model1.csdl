@@ -13,7 +13,7 @@
       <End Role="Doenca" EntitySet="DoencaSet" />
       <End Role="RemedioDoenca" EntitySet="RemedioDoencaSet" />
     </AssociationSet>
-    <AssociationSet Name="RemedioRemedioDoenca" Association="Model1.RemedioRemedioDoenca">
+    <AssociationSet Name="FK_RemedioRemedioDoenca" Association="Model1.FK_RemedioRemedioDoenca">
       <End Role="Remedio" EntitySet="RemedioSet" />
       <End Role="RemedioDoenca" EntitySet="RemedioDoencaSet" />
     </AssociationSet>
@@ -41,7 +41,7 @@
     <Property Name="ReceitaId" Type="Int32" Nullable="false" />
     <Property Name="Tipo" Type="Model1.Tipo" Nullable="false" />
     <NavigationProperty Name="Receita" Relationship="Model1.ReceitaRemedios" FromRole="Remedio" ToRole="Receita" />
-    <NavigationProperty Name="RemedioDoenca" Relationship="Model1.RemedioRemedioDoenca" FromRole="Remedio" ToRole="RemedioDoenca" />
+    <NavigationProperty Name="RemedioDoencaSet" Relationship="Model1.FK_RemedioRemedioDoenca" FromRole="Remedio" ToRole="RemedioDoenca" />
   </EntityType>
   <EntityType Name="Doenca">
     <Key>
@@ -58,11 +58,10 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="RemediosId" Type="Int32" Nullable="false" />
     <Property Name="DoencaId" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Doenca" Relationship="Model1.DoencaRemedioDoenca" FromRole="RemedioDoenca" ToRole="Doenca" />
-    <NavigationProperty Name="Remedio" Relationship="Model1.RemedioRemedioDoenca" FromRole="RemedioDoenca" ToRole="Remedio" />
-    <Property Name="RemedioId" Type="Int32" Nullable="false" />
+    <Property Name="RemedioId" Nullable="false" Type="Int32" />
+    <NavigationProperty Name="RemedioSet" Relationship="Model1.FK_RemedioRemedioDoenca" FromRole="RemedioDoenca" ToRole="Remedio" />
   </EntityType>
   <Association Name="ReceitaRemedios">
     <End Type="Model1.Receita" Role="Receita" Multiplicity="1" />
@@ -88,7 +87,13 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="RemedioRemedioDoenca">
+  <EnumType Name="Tipo">
+    <Member Name="SemTarja" Value="0" />
+    <Member Name="Amarela" Value="1" />
+    <Member Name="Vermelha" Value="2" />
+    <Member Name="Preta" Value="3" />
+  </EnumType>
+  <Association Name="FK_RemedioRemedioDoenca">
     <End Type="Model1.Remedio" Role="Remedio" Multiplicity="1" />
     <End Type="Model1.RemedioDoenca" Role="RemedioDoenca" Multiplicity="*" />
     <ReferentialConstraint>
@@ -100,10 +105,4 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EnumType Name="Tipo">
-    <Member Name="SemTarja" Value="0" />
-    <Member Name="Amarela" Value="1" />
-    <Member Name="Vermelha" Value="2" />
-    <Member Name="Preta" Value="3" />
-  </EnumType>
 </Schema>

@@ -21,6 +21,18 @@ namespace TomaRemedio.Controllers
             return View(db.Doencas.ToList());
         }
 
+        public ActionResult Procura(string doenca, string procura)
+        {
+            ViewBag.Nome = String.IsNullOrEmpty(doenca) ? "name_desc" : "";
+            var Procuradoenca = from d in db.Doencas select d;
+            if (!String.IsNullOrEmpty(procura))
+            {
+                Procuradoenca = Procuradoenca.Where(d => d.Nome.Contains(procura));
+                return View(Procuradoenca);
+            }
+              return View(db.Doencas.ToList());
+        }
+
         // GET: Doencas/Details/5
         public ActionResult Details(int? id)
         {

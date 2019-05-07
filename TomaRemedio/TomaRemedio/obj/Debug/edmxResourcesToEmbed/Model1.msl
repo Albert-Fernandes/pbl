@@ -39,7 +39,6 @@
       <EntityTypeMapping TypeName="IsTypeOf(Model1.RemedioDoenca)">
         <MappingFragment StoreEntitySet="RemedioDoencaSet">
           <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="RemediosId" ColumnName="RemediosId" />
           <ScalarProperty Name="DoencaId" ColumnName="DoencaId" />
           <ScalarProperty Name="RemedioId" ColumnName="RemedioId" />
         </MappingFragment>
