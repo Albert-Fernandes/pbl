@@ -1,0 +1,42 @@
+﻿@model TomaRemedio.RemedioDoenca
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>RemedioDoenca</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Doenca.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Doenca.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Remedio.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Remedio.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RemediosId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RemediosId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

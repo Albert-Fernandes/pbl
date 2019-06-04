@@ -88,3 +88,5 @@ C:\Users\Casa\source\repos\AppBalada\AppBalada\obj\Debug\AppBalada.pdb
 C:\Users\Casa\source\repos\AppBalada\AppBalada\obj\Debug\AppBalada.Migrations.InitialCreate.resources
 C:\Users\Casa\source\repos\AppBalada\AppBalada\obj\Debug\AppBalada.csproj.GenerateResource.cache
 C:\Users\Casa\source\repos\AppBalada\AppBalada\obj\Debug\AppBalada.Migrations._01.resources
+C:\Users\albert.fonseca\Documents\Albert-pessoal\pbl\AppBalada\obj\Debug\AppBalada.dll
+C:\Users\albert.fonseca\Documents\Albert-pessoal\pbl\AppBalada\obj\Debug\AppBalada.pdb

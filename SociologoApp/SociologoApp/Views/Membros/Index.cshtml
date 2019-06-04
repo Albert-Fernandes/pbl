@@ -1,0 +1,71 @@
+﻿@model IEnumerable<SociologoApp.Membro>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Membros</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cpf)
+        </th>
+        <th>
+            <span>É  Escolarizado?</span>
+        </th>
+        <th>
+            <span>É Empregado ?</span>
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Familia.Nome)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cpf)
+        </td>
+        <td>
+            @if (item.IsEscolarizado == true)
+            {
+                <span>Sim</span>
+            }
+            else
+            {
+                <span>Não</span>
+            }
+        </td>
+        <td>
+            @if (item.isEmpregado==true)
+            {
+                <span>Sim</span>
+            }
+            else
+            {
+                <span>Não</span>
+            }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Familia.Nome)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

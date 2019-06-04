@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1cc6fb108a32458b931ddeab01f024dd" Name="Diagram1">
+        <EntityTypeShape EntityType="dbSociologoAppModel.Emprego" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbSociologoAppModel.Familia" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbSociologoAppModel.Membro" Width="1.5" PointX="3" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbSociologoAppModel.TipoMembro" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <AssociationConnector Association="dbSociologoAppModel.FK_Emprego" ManuallyRouted="false" />
+        <AssociationConnector Association="dbSociologoAppModel.FK_Membro" ManuallyRouted="false" />
+        <AssociationConnector Association="dbSociologoAppModel.FK_TipoMembro" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

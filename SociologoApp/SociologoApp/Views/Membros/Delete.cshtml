@@ -1,0 +1,64 @@
+﻿@model SociologoApp.Membro
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Membro</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cpf)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cpf)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsEscolarizado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsEscolarizado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.isEmpregado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.isEmpregado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Familia.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Familia.Nome)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
