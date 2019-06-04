@@ -1,0 +1,50 @@
+﻿@model eGames.Models.Time
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Time</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Partida.Premiacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Partida.Premiacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Vitoria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vitoria)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsVencedor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsVencedor)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TimeId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

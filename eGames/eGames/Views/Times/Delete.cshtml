@@ -1,0 +1,56 @@
+﻿@model eGames.Models.Time
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Time</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Partida.Premiacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Partida.Premiacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Vitoria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vitoria)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsVencedor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsVencedor)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

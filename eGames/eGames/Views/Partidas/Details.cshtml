@@ -1,0 +1,34 @@
+﻿@model eGames.Models.Partida
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Partida</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Premiacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Premiacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TempoPartida)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TempoPartida)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PartidaId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
