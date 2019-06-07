@@ -10,6 +10,7 @@ namespace eGames.Models
         public int PartidaId { get; set; }
         public string Premiacao { get; set; }
         public String TempoPartida { get; set; }
-        public virtual ICollection<Time>Times { get; set; }
+        public string TimeVencedor { get; set; }
+        public virtual ICollection<Time_Partida> Time_Partidas { get; set; }
     }
 }

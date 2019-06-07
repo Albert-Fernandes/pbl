@@ -17,8 +17,7 @@ namespace eGames.Controllers
         // GET: Times
         public ActionResult Index()
         {
-            var times = db.Times.Include(t => t.Partida);
-            return View(times.ToList());
+            return View(db.Times.ToList());
         }
 
         // GET: Times/Details/5
@@ -39,7 +38,6 @@ namespace eGames.Controllers
         // GET: Times/Create
         public ActionResult Create()
         {
-            ViewBag.PartidaId = new SelectList(db.Partidas, "PartidaId", "Premiacao");
             return View();
         }
 
@@ -48,24 +46,15 @@ namespace eGames.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "TimeId,Nome,Vitoria,IsVencedor,PartidaId")] Time time,List<Jogador>Jogadores)
+        public ActionResult Create([Bind(Include = "TimeId,Nome,Vitoria")] Time time)
         {
-            var quantidade = db.Jogadors.Count();
-            if (quantidade <= 5)
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
-                {
-                    foreach(var jogadoresid in Jogadores)
-                    {
-
-                    }
-                    db.Times.Add(time);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
+                db.Times.Add(time);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
 
-            ViewBag.PartidaId = new SelectList(db.Partidas, "PartidaId", "Premiacao", time.PartidaId);
             return View(time);
         }
 
@@ -81,7 +70,6 @@ namespace eGames.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.PartidaId = new SelectList(db.Partidas, "PartidaId", "Premiacao", time.PartidaId);
             return View(time);
         }
 
@@ -90,7 +78,7 @@ namespace eGames.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "TimeId,Nome,Vitoria,IsVencedor,PartidaId")] Time time)
+        public ActionResult Edit([Bind(Include = "TimeId,Nome,Vitoria")] Time time)
         {
             if (ModelState.IsValid)
             {
@@ -98,7 +86,6 @@ namespace eGames.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.PartidaId = new SelectList(db.Partidas, "PartidaId", "Premiacao", time.PartidaId);
             return View(time);
         }
 

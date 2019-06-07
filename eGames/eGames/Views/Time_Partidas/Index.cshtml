@@ -1,4 +1,4 @@
-﻿@model IEnumerable<eGames.Models.Time_Patrocinador>
+﻿@model IEnumerable<eGames.Models.Time_Partida>
 
 @{
     ViewBag.Title = "Index";
@@ -12,7 +12,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Patrocinador.Nome)
+            @Html.DisplayNameFor(model => model.Partida.Premiacao)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Time.Nome)
@@ -23,15 +23,15 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Patrocinador.Nome)
+            @Html.DisplayFor(modelItem => item.Partida.Premiacao)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Time.Nome)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Time_PatrocinadorId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Time_PatrocinadorId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Time_PatrocinadorId })
+            @Html.ActionLink("Edit", "Edit", new { id=item.Time_PartidaId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Time_PartidaId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Time_PartidaId })
         </td>
     </tr>
 }

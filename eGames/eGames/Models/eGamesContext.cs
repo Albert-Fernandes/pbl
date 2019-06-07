@@ -28,5 +28,9 @@ namespace eGames.Models
         public System.Data.Entity.DbSet<eGames.Models.Patrocinador> Patrocinadors { get; set; }
 
         public System.Data.Entity.DbSet<eGames.Models.Time_Patrocinador> Time_Patrocinador { get; set; }
+
+        public System.Data.Entity.DbSet<eGames.Models.Time_Partida> Time_Partida { get; set; }
+
+        public System.Data.Entity.DbSet<eGames.Models.Vencedor> Vencedors { get; set; }
     }
 }

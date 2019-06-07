@@ -46,7 +46,7 @@ namespace eGames.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PartidaId,Premiacao,TempoPartida")] Partida partida)
+        public ActionResult Create([Bind(Include = "PartidaId,Premiacao,TempoPartida,TimeVencedor")] Partida partida)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace eGames.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PartidaId,Premiacao,TempoPartida")] Partida partida)
+        public ActionResult Edit([Bind(Include = "PartidaId,Premiacao,TempoPartida,TimeVencedor")] Partida partida)
         {
             if (ModelState.IsValid)
             {

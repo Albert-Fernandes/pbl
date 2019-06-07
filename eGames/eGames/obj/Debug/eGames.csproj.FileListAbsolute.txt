@@ -85,3 +85,8 @@ C:\Users\Casa\Documents\albert\pbl\eGames\eGames\bin\EntityFramework.dll
 C:\Users\Casa\Documents\albert\pbl\eGames\eGames\bin\EntityFramework.SqlServer.dll
 C:\Users\Casa\Documents\albert\pbl\eGames\eGames\bin\EntityFramework.xml
 C:\Users\Casa\Documents\albert\pbl\eGames\eGames\bin\EntityFramework.SqlServer.xml
+C:\Users\Casa\Documents\albert\pbl\eGames\eGames\obj\Debug\eGames.Migrations.InitialCreate.resources
+C:\Users\Casa\Documents\albert\pbl\eGames\eGames\obj\Debug\eGames.csproj.GenerateResource.cache
+C:\Users\Casa\Documents\albert\pbl\eGames\eGames\obj\Debug\eGames.Migrations.optario.resources
+C:\Users\Casa\Documents\albert\pbl\eGames\eGames\obj\Debug\eGames.Migrations.vai.resources
+C:\Users\Casa\Documents\albert\pbl\eGames\eGames\obj\Debug\eGames.Migrations.choro.resources

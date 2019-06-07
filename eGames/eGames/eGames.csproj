@@ -131,16 +131,37 @@
     <Compile Include="Controllers\PartidasController.cs" />
     <Compile Include="Controllers\PatrocinadoresController.cs" />
     <Compile Include="Controllers\TimesController.cs" />
+    <Compile Include="Controllers\Time_PartidasController.cs" />
     <Compile Include="Controllers\Time_PatrocinadoresController.cs" />
+    <Compile Include="Controllers\VencedoresController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906040205254_InitialCreate.cs" />
+    <Compile Include="Migrations\201906040205254_InitialCreate.Designer.cs">
+      <DependentUpon>201906040205254_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906060211260_optario.cs" />
+    <Compile Include="Migrations\201906060211260_optario.Designer.cs">
+      <DependentUpon>201906060211260_optario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906062339204_[vai].cs" />
+    <Compile Include="Migrations\201906062339204_[vai].Designer.cs">
+      <DependentUpon>201906062339204_[vai].cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906070046306_[choro].cs" />
+    <Compile Include="Migrations\201906070046306_[choro].Designer.cs">
+      <DependentUpon>201906070046306_[choro].cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\eGamesContext.cs" />
     <Compile Include="Models\Jogador.cs" />
     <Compile Include="Models\Partida.cs" />
     <Compile Include="Models\Patrocinador.cs" />
     <Compile Include="Models\Time.cs" />
+    <Compile Include="Models\Time_Partida.cs" />
     <Compile Include="Models\Time_Patrocinador.cs" />
+    <Compile Include="Models\Vencedor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -179,11 +200,6 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Jogadores\Create.cshtml" />
-    <Content Include="Views\Jogadores\Delete.cshtml" />
-    <Content Include="Views\Jogadores\Details.cshtml" />
-    <Content Include="Views\Jogadores\Edit.cshtml" />
-    <Content Include="Views\Jogadores\Index.cshtml" />
     <Content Include="Views\Times\Create.cshtml" />
     <Content Include="Views\Times\Delete.cshtml" />
     <Content Include="Views\Times\Details.cshtml" />
@@ -194,16 +210,21 @@
     <Content Include="Views\Partidas\Details.cshtml" />
     <Content Include="Views\Partidas\Edit.cshtml" />
     <Content Include="Views\Partidas\Index.cshtml" />
+    <Content Include="Views\Time_Partidas\Create.cshtml" />
+    <Content Include="Views\Time_Partidas\Delete.cshtml" />
+    <Content Include="Views\Time_Partidas\Details.cshtml" />
+    <Content Include="Views\Time_Partidas\Edit.cshtml" />
+    <Content Include="Views\Time_Partidas\Index.cshtml" />
+    <Content Include="Views\Vencedores\Create.cshtml" />
+    <Content Include="Views\Vencedores\Delete.cshtml" />
+    <Content Include="Views\Vencedores\Details.cshtml" />
+    <Content Include="Views\Vencedores\Edit.cshtml" />
+    <Content Include="Views\Vencedores\Index.cshtml" />
     <Content Include="Views\Patrocinadores\Create.cshtml" />
     <Content Include="Views\Patrocinadores\Delete.cshtml" />
     <Content Include="Views\Patrocinadores\Details.cshtml" />
     <Content Include="Views\Patrocinadores\Edit.cshtml" />
     <Content Include="Views\Patrocinadores\Index.cshtml" />
-    <Content Include="Views\Time_Patrocinadores\Create.cshtml" />
-    <Content Include="Views\Time_Patrocinadores\Delete.cshtml" />
-    <Content Include="Views\Time_Patrocinadores\Details.cshtml" />
-    <Content Include="Views\Time_Patrocinadores\Edit.cshtml" />
-    <Content Include="Views\Time_Patrocinadores\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -220,6 +241,20 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201906040205254_InitialCreate.resx">
+      <DependentUpon>201906040205254_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906060211260_optario.resx">
+      <DependentUpon>201906060211260_optario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906062339204_[vai].resx">
+      <DependentUpon>201906062339204_[vai].cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906070046306_[choro].resx">
+      <DependentUpon>201906070046306_[choro].cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
